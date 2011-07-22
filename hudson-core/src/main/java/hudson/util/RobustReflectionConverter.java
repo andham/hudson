@@ -62,6 +62,8 @@ import static java.util.logging.Level.WARNING;
  */
 public class RobustReflectionConverter implements Converter {
 
+    protected static final String ECLIPSE_PACKAGE_PREFIX = "org.eclipse.";
+
     protected final ReflectionProvider reflectionProvider;
     protected final Mapper mapper;
     protected transient SerializationMethodInvoker serializationMethodInvoker;
@@ -219,7 +221,7 @@ public class RobustReflectionConverter implements Converter {
                 Class classDefiningField = determineWhichClassDefinesField(reader);
                 boolean fieldExistsInClass = !implicitCollectionHasSameName && fieldDefinedInClass(result,fieldName);
 
-                Class type = determineType(reader, fieldExistsInClass, result, fieldName, classDefiningField);
+                Class type = getType(reader, fieldExistsInClass, result, fieldName, classDefiningField);
                 final Object value;
                 if (fieldExistsInClass) {
                     Field field = reflectionProvider.getField(result.getClass(),fieldName);
@@ -273,14 +275,34 @@ public class RobustReflectionConverter implements Converter {
         list.add(e);
     }
 
-    private boolean fieldDefinedInClass(Object result, String attrName) {
-        // during unmarshalling, unmarshal into transient fields like XStream 1.1.3
-        //boolean fieldExistsInClass = reflectionProvider.fieldDefinedInClass(attrName, result.getClass());
-        return reflectionProvider.getFieldOrNull(result.getClass(),attrName)!=null;
+    public static class DuplicateFieldException extends ConversionException {
+        public DuplicateFieldException(String msg) {
+            super(msg);
+            add("duplicate-field", msg);
+        }
     }
 
     protected Object unmarshalField(final UnmarshallingContext context, final Object result, Class type, Field field) {
         return context.convertAnother(result, type);
+    }
+
+    protected Object instantiateNewInstance(HierarchicalStreamReader reader, UnmarshallingContext context) {
+        String readResolveValue = reader.getAttribute(mapper.aliasForAttribute("resolves-to"));
+
+        Class type = readResolveValue != null ? mapper.realClass(readResolveValue) : context.getRequiredType();
+
+        Object currentObject = context.currentObject();
+        if (currentObject != null) {
+            if (type.isInstance(currentObject))
+                return currentObject;
+        }
+        return reflectionProvider.newInstance(type);
+    }
+
+    private boolean fieldDefinedInClass(Object result, String attrName) {
+        // during unmarshalling, unmarshal into transient fields like XStream 1.1.3
+        //boolean fieldExistsInClass = reflectionProvider.fieldDefinedInClass(attrName, result.getClass());
+        return reflectionProvider.getFieldOrNull(result.getClass(),attrName)!=null;
     }
 
     private Map writeValueToImplicitCollection(UnmarshallingContext context, Object value, Map implicitCollections, Object result, String itemFieldName) {
@@ -313,19 +335,6 @@ public class RobustReflectionConverter implements Converter {
         return definedIn == null ? null : mapper.realClass(definedIn);
     }
 
-    protected Object instantiateNewInstance(HierarchicalStreamReader reader, UnmarshallingContext context) {
-        String readResolveValue = reader.getAttribute(mapper.aliasForAttribute("resolves-to"));
-
-        Class type = readResolveValue != null ? mapper.realClass(readResolveValue) : context.getRequiredType();
-
-        Object currentObject = context.currentObject();
-        if (currentObject != null) {
-            if (type.isInstance(currentObject))
-                return currentObject;
-        }
-        return reflectionProvider.newInstance(type);
-    }
-
     private static class SeenFields {
 
         private Set seen = new HashSet();
@@ -344,12 +353,24 @@ public class RobustReflectionConverter implements Converter {
 
     }
 
-    private Class determineType(HierarchicalStreamReader reader, boolean validField, Object result, String fieldName, Class definedInCls) {
+    private Class getType(HierarchicalStreamReader reader, boolean validField, Object result, String fieldName,
+                                Class definedInCls) {
         String classAttribute = reader.getAttribute(mapper.aliasForAttribute("class"));
+        try {
+            return determineType(reader, validField, result, fieldName, definedInCls, classAttribute);
+        } catch (CannotResolveClassException e) {
+            //attempt to load class from "org.eclipse.*" package
+            return determineType(reader, validField, result, fieldName, definedInCls,
+                ECLIPSE_PACKAGE_PREFIX + classAttribute);
+        }
+    }
+
+    private Class determineType(HierarchicalStreamReader reader, boolean validField, Object result, String fieldName,
+                          Class definedInCls, String classAttribute) {
         Class fieldType = reflectionProvider.getFieldType(result, fieldName, definedInCls);
         if (classAttribute != null) {
             Class specifiedType = mapper.realClass(classAttribute);
-            if(fieldType.isAssignableFrom(specifiedType))
+            if (fieldType.isAssignableFrom(specifiedType))
                 // make sure that the specified type in XML is compatible with the field type.
                 // this allows the code to evolve in more flexible way.
                 return specifiedType;
@@ -369,13 +390,6 @@ public class RobustReflectionConverter implements Converter {
     private Object readResolve() {
         serializationMethodInvoker = new SerializationMethodInvoker();
         return this;
-    }
-
-    public static class DuplicateFieldException extends ConversionException {
-        public DuplicateFieldException(String msg) {
-            super(msg);
-            add("duplicate-field", msg);
-        }
     }
 
     private static final Logger LOGGER = Logger.getLogger(RobustReflectionConverter.class.getName());
