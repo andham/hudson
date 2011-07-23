@@ -158,7 +158,8 @@ public abstract class ListViewColumn implements ExtensionPoint, Describable<List
         LastSuccessColumn.class,
         LastFailureColumn.class,
         LastDurationColumn.class,
-        BuildButtonColumn.class
+        BuildButtonColumn.class,
+        ConsoleColumn.class
     );
 
     private static final Logger LOGGER = Logger.getLogger(ListViewColumn.class.getName());
