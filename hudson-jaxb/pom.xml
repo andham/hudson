@@ -16,99 +16,98 @@
 
 
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-  <parent>
-    <groupId>org.eclipse.hudson.main</groupId>
-    <artifactId>hudson</artifactId>
-    <version>2.1.0-SNAPSHOT</version>
-    <relativePath>../pom.xml</relativePath>
-  </parent>
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>org.eclipse.hudson.main</groupId>
+        <artifactId>hudson</artifactId>
+        <version>2.1.0-SNAPSHOT</version>
+        <relativePath>../pom.xml</relativePath>
+    </parent>
 
-  <artifactId>hudson-jaxb</artifactId>
-  <name>Hudson :: JAXB</name>
-  <packaging>pom</packaging>
+    <artifactId>hudson-jaxb</artifactId>
+    <name>Hudson :: JAXB</name>
+    <packaging>pom</packaging>
 
-  <description>
+    <description>
     Compilation and runtime support for using JAXB in Hudson.
-  </description>
+    </description>
 
-  <dependencyManagement>
+    <dependencyManagement>
 
-    <dependencies>
-      <dependency>
-        <groupId>javax.xml.bind</groupId>
-        <artifactId>jaxb-api</artifactId>
-        <version>2.2.2</version>
-      </dependency>
+        <dependencies>
+            <dependency>
+                <groupId>javax.xml.bind</groupId>
+                <artifactId>jaxb-api</artifactId>
+                <version>2.2.2</version>
+            </dependency>
 
-      <dependency>
-        <groupId>com.sun.xml.bind</groupId>
-        <artifactId>jaxb-impl</artifactId>
-        <version>2.2.2</version>
-      </dependency>
+            <dependency>
+                <groupId>com.sun.xml.bind</groupId>
+                <artifactId>jaxb-impl</artifactId>
+                <version>2.2.2</version>
+            </dependency>
 
-      <dependency>
-        <groupId>com.sun.xml.bind</groupId>
-        <artifactId>jaxb-xjc</artifactId>
-        <version>2.2.2</version>
-      </dependency>
+            <dependency>
+                <groupId>com.sun.xml.bind</groupId>
+                <artifactId>jaxb-xjc</artifactId>
+                <version>2.2.2</version>
+            </dependency>
 
-      <dependency>
-        <groupId>org.jvnet.jaxb2_commons</groupId>
-        <artifactId>jaxb2-basics</artifactId>
-        <version>0.6.0</version>
-      </dependency>
+            <dependency>
+                <groupId>org.jvnet.jaxb2_commons</groupId>
+                <artifactId>jaxb2-basics</artifactId>
+                <version>0.6.0</version>
+            </dependency>
 
-      <dependency>
-        <groupId>org.jvnet.jaxb2_commons</groupId>
-        <artifactId>jaxb2-basics-tools</artifactId>
-        <version>0.6.0</version>
-      </dependency>
+            <dependency>
+                <groupId>org.jvnet.jaxb2_commons</groupId>
+                <artifactId>jaxb2-basics-tools</artifactId>
+                <version>0.6.0</version>
+            </dependency>
 
-      <dependency>
-        <groupId>org.jvnet.jaxb2_commons</groupId>
-        <artifactId>jaxb2-basics-annotate</artifactId>
-        <version>0.6.0</version>
-      </dependency>
+            <dependency>
+                <groupId>org.jvnet.jaxb2_commons</groupId>
+                <artifactId>jaxb2-basics-annotate</artifactId>
+                <version>0.6.0</version>
+            </dependency>
 
-      <dependency>
-        <groupId>net.java.dev.jaxb2-commons</groupId>
-        <artifactId>jaxb-fluent-api</artifactId>
-        <version>2.1.8</version>
-      </dependency>
+            <dependency>
+                <groupId>net.java.dev.jaxb2-commons</groupId>
+                <artifactId>jaxb-fluent-api</artifactId>
+                <version>2.1.8</version>
+            </dependency>
 
-      <dependency>
-        <groupId>org.codehaus.jackson</groupId>
-        <artifactId>jackson-core-asl</artifactId>
-        <version>1.7.1</version>
-      </dependency>
+            <dependency>
+                <groupId>org.codehaus.jackson</groupId>
+                <artifactId>jackson-core-asl</artifactId>
+                <version>1.7.1</version>
+            </dependency>
 
-      <dependency>
-        <groupId>org.codehaus.jackson</groupId>
-        <artifactId>jackson-mapper-asl</artifactId>
-        <version>1.7.1</version>
-      </dependency>
+            <dependency>
+                <groupId>org.codehaus.jackson</groupId>
+                <artifactId>jackson-mapper-asl</artifactId>
+                <version>1.7.1</version>
+            </dependency>
 
       <!-- INTERNAL -->
 
-      <dependency>
-        <groupId>org.eclipse.hudson.main</groupId>
-        <artifactId>hudson-jaxb-runtime</artifactId>
-        <version>${project.version}</version>
-      </dependency>
+            <groupId>com.flipthebird.gwt-hashcode-equals</groupId>
+            <artifactId>gwt-hashcode-equals</artifactId>
+            <version>0.1.0</version>
+        
+      <!-- INTERNAL -->
 
-      <dependency>
-        <groupId>org.eclipse.hudson.main</groupId>
-        <artifactId>hudson-jaxb-xjc</artifactId>
-        <version>${project.version}</version>
-      </dependency>
-    </dependencies>
+            <dependency>
+                <groupId>org.eclipse.hudson.main</groupId>
+                <artifactId>hudson-jaxb-xjc</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+        </dependencies>
 
-  </dependencyManagement>
+    </dependencyManagement>
 
-  <modules>
-    <module>hudson-jaxb-runtime</module>
-    <module>hudson-jaxb-xjc</module>
-  </modules>
+    <modules>
+        <module>hudson-jaxb-xjc</module>
+    </modules>
 
 </project>

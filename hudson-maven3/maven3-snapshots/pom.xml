@@ -31,22 +31,32 @@
         <pluginName>Hudson SNAPSHOT Monitoring</pluginName>
     </properties>
 
-    <dependency>
-        <groupId>org.apache.maven</groupId>
-        <artifactId>maven-repository-metadata</artifactId>
-        <version>${mavenVersion}</version>
-    </dependency>
+    <dependencies>
+        
+        <dependency>
+            <groupId>org.apache.maven</groupId>
+            <artifactId>maven-repository-metadata</artifactId>
+            <version>${mavenVersion}</version>
+        </dependency>
 
-    <dependency>
-        <groupId>org.eclipse.hudson.main</groupId>
-        <artifactId>maven3-plugin</artifactId>
-        <exclusions>
-            <exclusion>
-                <groupId>org.eclipse.hudson.main</groupId>
-                <artifactId>hudson-rest-plugin</artifactId>
-            </exclusion>
-        </exclusions>
-    </dependency>
+        <dependency>
+            <groupId>org.eclipse.hudson.main</groupId>
+            <artifactId>maven3-plugin</artifactId>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.eclipse.hudson.main</groupId>
+                    <artifactId>hudson-rest-plugin</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        
+        <dependency>
+            <groupId>org.eclipse.hudson.main</groupId>
+            <artifactId>hudson-service</artifactId>
+            <scope>provided</scope>
+        </dependency>
+    
+    </dependencies>
 
     <build>
     <!-- Strip off the version; so its easier to drop in plugins for testing -->

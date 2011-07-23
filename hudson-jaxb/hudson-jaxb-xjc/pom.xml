@@ -16,67 +16,63 @@
 
 
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-  <parent>
-    <groupId>org.eclipse.hudson.main</groupId>
-    <artifactId>hudson-jaxb</artifactId>
-    <version>2.1.0-SNAPSHOT</version>
-  </parent>
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>org.eclipse.hudson.main</groupId>
+        <artifactId>hudson-jaxb</artifactId>
+        <version>2.1.0-SNAPSHOT</version>
+    </parent>
 
-  <artifactId>hudson-jaxb-xjc</artifactId>
-  <name>Hudson :: JAXB :: XJC</name>
+    <artifactId>hudson-jaxb-xjc</artifactId>
+    <name>Hudson :: JAXB :: XJC</name>
 
-  <description>
+    <description>
     Extensions to JAXB XJC and collection of common 3rd-party plugins which are used.
-  </description>
+    </description>
 
-  <dependencies>
-    <dependency>
-      <groupId>org.eclipse.hudson.main</groupId>
-      <artifactId>hudson-jaxb-runtime</artifactId>
-    </dependency>
+    <dependencies>
 
-    <dependency>
-      <groupId>org.jvnet.jaxb2_commons</groupId>
-      <artifactId>jaxb2-basics-tools</artifactId>
-    </dependency>
+        <dependency>
+            <groupId>org.jvnet.jaxb2_commons</groupId>
+            <artifactId>jaxb2-basics-tools</artifactId>
+        </dependency>
 
-    <dependency>
-      <groupId>org.jvnet.jaxb2_commons</groupId>
-      <artifactId>jaxb2-basics</artifactId>
-    </dependency>
+        <dependency>
+            <groupId>org.jvnet.jaxb2_commons</groupId>
+            <artifactId>jaxb2-basics</artifactId>
+        </dependency>
 
-    <dependency>
-      <groupId>org.jvnet.jaxb2_commons</groupId>
-      <artifactId>jaxb2-basics-annotate</artifactId>
-    </dependency>
+        <dependency>
+            <groupId>org.jvnet.jaxb2_commons</groupId>
+            <artifactId>jaxb2-basics-annotate</artifactId>
+        </dependency>
 
-    <dependency>
-      <groupId>net.java.dev.jaxb2-commons</groupId>
-      <artifactId>jaxb-fluent-api</artifactId>
-    </dependency>
+        <dependency>
+            <groupId>net.java.dev.jaxb2-commons</groupId>
+            <artifactId>jaxb-fluent-api</artifactId>
+        </dependency>
 
-    <dependency>
-      <groupId>org.jvnet.hudson</groupId>
-      <artifactId>xstream</artifactId>
-    </dependency>
+        <dependency>
+            <groupId>org.jvnet.hudson</groupId>
+            <artifactId>xstream</artifactId>
+        </dependency>
 
-    <dependency>
-      <groupId>org.codehaus.jackson</groupId>
-      <artifactId>jackson-core-asl</artifactId>
-    </dependency>
+        <dependency>
+            <groupId>org.codehaus.jackson</groupId>
+            <artifactId>jackson-core-asl</artifactId>
+        </dependency>
 
-    <dependency>
-      <groupId>javax.annotation</groupId>
-      <artifactId>jsr250-api</artifactId>
-      <version>1.0</version>
-    </dependency>
+        <dependency>
+            <groupId>javax.annotation</groupId>
+            <artifactId>jsr250-api</artifactId>
+            <version>1.0</version>
+        </dependency>
 
-    <dependency>
-      <groupId>org.eclipse.hudson.main</groupId>
-      <artifactId>hudson-test-utils</artifactId>
-      <scope>test</scope>
-    </dependency>
-  </dependencies>
+        <dependency>
+            <groupId>org.eclipse.hudson.main</groupId>
+            <artifactId>hudson-test-utils</artifactId>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
 
 </project>

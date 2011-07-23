@@ -35,22 +35,9 @@
     <dependencyManagement>
         <dependencies>
         
-           <!--
-     | Provided by Hudson core
-   -->
-            <dependency>
-                <groupId>org.jvnet.hudson.main</groupId>
-                <artifactId>hudson-inject</artifactId>
-                <scope>provided</scope>
-            </dependency>
-            <dependency>
-                <groupId>org.jvnet.hudson.main</groupId>
-                <artifactId>hudson-service</artifactId>
-                <scope>provided</scope>
-            </dependency>
-    <!--
-     | Test dependencies
-    -->
+            <!--
+             Don't add dependencies here, unless you want them in the slavebundle
+            -->
 
             <dependency>
                 <groupId>org.eclipse.hudson.main</groupId>
@@ -72,7 +59,7 @@
                 </exclusions>
             </dependency>
 
-      <!-- INTERNAL -->
+            <!-- INTERNAL -->
 
             <dependency>
                 <groupId>org.eclipse.hudson.main</groupId>
@@ -129,14 +116,6 @@
             </dependency>
         </dependencies>
     </dependencyManagement>
-
-    <dependencies>
-        <dependency>
-            <groupId>org.eclipse.hudson.main</groupId>
-            <artifactId>hudson-test-utils</artifactId>
-            <scope>test</scope>
-        </dependency>
-    </dependencies>
 
     <modules>
         <module>maven3-model</module>
