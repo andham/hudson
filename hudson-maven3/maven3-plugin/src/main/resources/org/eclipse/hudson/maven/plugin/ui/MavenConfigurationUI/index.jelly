@@ -32,13 +32,25 @@
                     height: 100%;
                 }
             </style>
+            .gwt-TabLayoutPanel .gwt-TabLayoutPanelTab {
+                    float: left;
+                }
+                .gwt-TabLayoutPanel {
+                    height: 100% !important;
+                }
+                .gwt-TabLayoutPanelContentContainer {
+                    height: 100% !important;
+                }
+                .gwt-TabLayoutPanelContent {
+                    height: 95% !important;
+                }
         </l:header>
 
         <st:include page="sidepanel.jelly" from="${it.sidePanelOwner}"/>
         <j:set var="images" value="${it.imagesPath}"/>
 
         <l:main-panel>
-            <div id="${it.mainPanelId}"/>
+            <div id="${it.mainPanelId}" name="${it.mainPanelId}"/>
         </l:main-panel>
     </l:layout>
 </j:jelly>

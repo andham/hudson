@@ -116,6 +116,18 @@
             </dependency>
         </dependencies>
     </dependencyManagement>
+    
+    <build>
+    <pluginManagement>
+      <plugins>
+        <plugin>
+          <groupId>org.codehaus.mojo</groupId>
+          <artifactId>gwt-maven-plugin</artifactId>
+          <version>${gwt-maven-plugin.version}</version>
+        </plugin>
+      </plugins>
+    </pluginManagement>
+  </build>
 
     <modules>
         <module>maven3-model</module>

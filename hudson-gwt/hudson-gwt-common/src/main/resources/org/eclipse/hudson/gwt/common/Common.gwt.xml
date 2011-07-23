@@ -45,7 +45,11 @@
     name. See http://code.google.com/webtoolkit/doc/latest/DevGuideOrganizingProjects.html#DevGuideModuleXml
     "Renaming modules" for how to have a prod and dev module.
     -->
-    <set-property name="user.agent" value="${gwt.user.agent}"/>
+    
+    <!--<set-property name="user.agent" value="${gwt.user.agent}"/>-->
+
+   <!-- Set to false to avoid runtime warnings for mismatched runtime and compile time user.agent values -->
+    <set-configuration-property name="user.agent.runtimeWarning" value="false"/>
 
     <!-- Disable embedding log output in a div.  Use the GWT browser plugin with the browsers console view to see events. -->
     <set-property name="log_DivLogger" value="DISABLED"/>
