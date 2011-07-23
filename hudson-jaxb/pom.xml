@@ -90,10 +90,11 @@
             </dependency>
 
       <!-- INTERNAL -->
-
-            <groupId>com.flipthebird.gwt-hashcode-equals</groupId>
-            <artifactId>gwt-hashcode-equals</artifactId>
-            <version>0.1.0</version>
+            <dependency>
+                <groupId>com.flipthebird.gwt-hashcode-equals</groupId>
+                <artifactId>gwt-hashcode-equals</artifactId>
+                <version>0.1.0</version>
+            </dependency>
         
       <!-- INTERNAL -->
 
