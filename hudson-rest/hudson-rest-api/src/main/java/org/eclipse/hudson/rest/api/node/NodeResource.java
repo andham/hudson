@@ -26,6 +26,7 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 
 import javax.inject.Inject;
+import javax.inject.Named;
 
 import org.eclipse.hudson.service.NodeService;
 
@@ -39,6 +40,7 @@ import org.eclipse.hudson.rest.model.NodesDTO;
  * @author <a href="mailto:jason@planet57.com">Jason Dillon</a>
  * @since 2.1.0
  */
+@Named
 @Path("/nodes")
 public class NodeResource extends ResourceSupport {
     private final NodeService nodeService;

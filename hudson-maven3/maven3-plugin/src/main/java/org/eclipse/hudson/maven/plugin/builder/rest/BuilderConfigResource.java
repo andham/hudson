@@ -23,6 +23,7 @@ import java.io.IOException;
 import java.util.List;
 
 import javax.inject.Inject;
+import javax.inject.Named;
 import javax.ws.rs.GET;
 import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
@@ -44,6 +45,7 @@ import org.eclipse.hudson.maven.model.config.BuildConfigurationDTO;
  * @author <a href="mailto:jason@planet57.com">Jason Dillon</a>
  * @since 2.1.0
  */
+@Named
 @Path(Constants.URI_PREFIX + "/builderConfig/{projectName}")
 @Produces({APPLICATION_JSON, APPLICATION_XML})
 public class BuilderConfigResource

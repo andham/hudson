@@ -16,11 +16,10 @@
 
 package org.eclipse.hudson.rest.api.queue;
 
+import javax.inject.Named;
 import org.eclipse.hudson.rest.api.internal.ResourceSupport;
 import org.eclipse.hudson.service.QueueService;
-import org.eclipse.hudson.service.SecurityService;
 
-import hudson.model.Hudson;
 import javax.inject.Inject;
 
 import javax.ws.rs.GET;
@@ -36,6 +35,7 @@ import static com.google.common.base.Preconditions.checkNotNull;
  * @author <a href="mailto:jason@planet57.com">Jason Dillon</a>
  * @since 2.1.0
  */
+@Named
 @Path("/queue")
 public class QueueResource extends ResourceSupport {
     private final QueueService queueService;

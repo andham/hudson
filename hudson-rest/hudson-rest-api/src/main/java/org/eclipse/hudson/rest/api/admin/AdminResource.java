@@ -16,6 +16,7 @@
 
 package org.eclipse.hudson.rest.api.admin;
 
+import javax.inject.Named;
 import javax.inject.Inject;
 
 import org.eclipse.hudson.rest.api.internal.ResourceSupport;
@@ -44,6 +45,7 @@ import static javax.ws.rs.core.Response.Status.*;
  * @author <a href="mailto:jason@planet57.com">Jason Dillon</a>
  * @since 2.1.0
  */
+@Named
 @Path("/admin")
 public class AdminResource
     extends ResourceSupport

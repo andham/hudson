@@ -16,6 +16,7 @@
 
 package org.eclipse.hudson.maven.plugin.builder.rest;
 
+import javax.inject.Named;
 import org.eclipse.hudson.maven.plugin.Constants;
 import org.eclipse.hudson.maven.plugin.builder.MavenBuilderDescriptor;
 import org.eclipse.hudson.maven.plugin.builder.MavenBuilderService;
@@ -39,6 +40,7 @@ import static javax.ws.rs.core.MediaType.APPLICATION_XML;
  * @author <a href="mailto:jason@planet57.com">Jason Dillon</a>
  * @since 2.1.0
  */
+@Named
 @Path(Constants.URI_PREFIX + "/builderDefaultConfig")
 @Produces({APPLICATION_JSON, APPLICATION_XML})
 public class BuilderDefaultConfigResource

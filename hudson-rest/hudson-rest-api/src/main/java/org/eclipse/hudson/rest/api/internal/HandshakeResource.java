@@ -16,7 +16,7 @@
 
 package org.eclipse.hudson.rest.api.internal;
 
-import org.eclipse.hudson.rest.common.Constants;
+import javax.inject.Named;
 import org.eclipse.hudson.service.SystemService;
 
 import javax.inject.Inject;
@@ -27,11 +27,9 @@ import javax.ws.rs.HeaderParam;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.WebApplicationException;
-import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 
-import static javax.ws.rs.core.MediaType.*;
 import static javax.ws.rs.core.MediaType.TEXT_PLAIN;
 import static javax.ws.rs.core.Response.Status.*;
 import static org.eclipse.hudson.rest.common.Constants.HUDSON_HEADER;
@@ -42,6 +40,7 @@ import static org.eclipse.hudson.rest.common.Constants.HUDSON_HEADER;
  * @author <a href="mailto:jason@planet57.com">Jason Dillon</a>
  * @since 2.1.0
  */
+@Named
 @Path("handshake")
 @Produces({TEXT_PLAIN})
 public class HandshakeResource

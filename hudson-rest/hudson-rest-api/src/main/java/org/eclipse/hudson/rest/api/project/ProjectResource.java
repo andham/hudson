@@ -16,6 +16,7 @@
 
 package org.eclipse.hudson.rest.api.project;
 
+import javax.inject.Named;
 import javax.inject.Inject;
 
 import org.eclipse.hudson.service.ProjectService;
@@ -36,6 +37,7 @@ import static com.google.common.base.Preconditions.checkNotNull;
  * @author <a href="mailto:jason@planet57.com">Jason Dillon</a>
  * @since 2.1.0
  */
+@Named
 @Path("/project")
 public class ProjectResource
     extends ResourceSupport

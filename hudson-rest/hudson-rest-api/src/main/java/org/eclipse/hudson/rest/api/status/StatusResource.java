@@ -16,6 +16,7 @@
 
 package org.eclipse.hudson.rest.api.status;
 
+import javax.inject.Named;
 import hudson.model.Hudson;
 import hudson.model.User;
 
@@ -39,6 +40,7 @@ import static com.google.common.base.Preconditions.checkNotNull;
  * @author <a href="mailto:jason@planet57.com">Jason Dillon</a>
  * @since 2.1.0
  */
+@Named
 @Path("status")
 public class StatusResource
         extends ResourceSupport

@@ -16,6 +16,7 @@
 
 package org.eclipse.hudson.rest.api.project;
 
+import javax.inject.Named;
 import org.eclipse.hudson.rest.api.build.BuildConverter;
 import org.eclipse.hudson.service.ProjectService;
 import org.eclipse.hudson.service.SecurityService;
@@ -63,6 +64,7 @@ import static javax.ws.rs.core.Response.Status.CONFLICT;
  * @author <a href="mailto:jason@planet57.com">Jason Dillon</a>
  * @since 2.1.0
  */
+@Named
 @Path("/projects")
 public class ProjectsResource
     extends ResourceSupport
