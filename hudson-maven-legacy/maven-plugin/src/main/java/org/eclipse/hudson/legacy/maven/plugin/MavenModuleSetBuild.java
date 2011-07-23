@@ -434,7 +434,7 @@ public class MavenModuleSetBuild extends AbstractMavenBuild<MavenModuleSet,Maven
             // actions need to be replaced atomically especially
             // given that two builds might complete simultaneously.
             // see http://issues.hudson-ci.org/browse/HUDSON-4220 for details
-            synchronized(notifyBuildLock) { {
+            synchronized(notifyBuildLock) {
                 boolean modified = false;
 
                 List<Action> actions = getActions();

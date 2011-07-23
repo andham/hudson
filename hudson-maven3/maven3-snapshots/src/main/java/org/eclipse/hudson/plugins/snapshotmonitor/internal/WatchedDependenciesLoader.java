@@ -16,6 +16,8 @@
 
 package org.eclipse.hudson.plugins.snapshotmonitor.internal;
 
+import java.util.HashSet;
+import java.util.Collection;
 import org.eclipse.hudson.utils.io.Closer;
 import org.eclipse.hudson.utils.marshal.Marshaller;
 import org.eclipse.hudson.utils.marshal.XStreamMarshaller;
@@ -56,7 +58,7 @@ public class WatchedDependenciesLoader
 
     public WatchedDependenciesLoader() {
         XStream xs = new XStream();
-        xs.setClassLoader(getClass().getClassLoader())
+        xs.setClassLoader(getClass().getClassLoader());
         xs.processAnnotations(WatchedDependencies.class);
         xs.addDefaultImplementation(HashSet.class,Collection.class);
         marshaller = new XStreamMarshaller(xs);

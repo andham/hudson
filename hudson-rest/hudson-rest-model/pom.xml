@@ -42,6 +42,12 @@
       <artifactId>jackson-core-asl</artifactId>
       <optional>true</optional>
     </dependency>
+    
+    <dependency>
+      <groupId>com.flipthebird.gwt-hashcode-equals</groupId>
+      <artifactId>gwt-hashcode-equals</artifactId>
+    </dependency>
+
   </dependencies>
 
   <build>
