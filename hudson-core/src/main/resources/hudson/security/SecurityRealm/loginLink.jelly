@@ -44,7 +44,7 @@
             var dataString = jQuery("#loginForm").serialize();
             jQuery.ajax({
               type: 'POST',
-              url: "${app.securityRealm.authenticationGatewayUrl}",
+              url: "${rootURL}/${app.securityRealm.authenticationGatewayUrl}",
               data: dataString,
               success: function(){
                 window.location.href="${from}";
@@ -53,7 +53,6 @@
                 jQuery('#loginError').css({ opacity: 1.0 });
                 jQuery('#loginMsg').css({ opacity: 0.0 });
               },
-              dataType: "html"
             }); 
         }
 
