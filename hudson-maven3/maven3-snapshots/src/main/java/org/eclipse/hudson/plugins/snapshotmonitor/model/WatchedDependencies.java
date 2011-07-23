@@ -32,7 +32,7 @@ import java.util.Collection;
 @XStreamInclude(WatchedDependency.class)
 public class WatchedDependencies
 {
-    @XStreamImplicit
+    @XStreamImplicit(itemFieldName="dependency")
     private Collection<WatchedDependency> dependencies;
 
     public Collection<WatchedDependency> getDependencies() {
@@ -45,8 +45,6 @@ public class WatchedDependencies
 
     @Override
     public String toString() {
-        return "WatchedDependencies{" +
-            "dependencies=" + dependencies +
-            '}';
+        return "WatchedDependencies{" + dependencies + '}';
     }
 }

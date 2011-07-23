@@ -56,7 +56,9 @@ public class WatchedDependenciesLoader
 
     public WatchedDependenciesLoader() {
         XStream xs = new XStream();
+        xs.setClassLoader(getClass().getClassLoader())
         xs.processAnnotations(WatchedDependencies.class);
+        xs.addDefaultImplementation(HashSet.class,Collection.class);
         marshaller = new XStreamMarshaller(xs);
     }
 
