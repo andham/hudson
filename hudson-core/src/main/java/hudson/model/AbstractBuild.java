@@ -650,7 +650,7 @@ public abstract class AbstractBuild<P extends AbstractProject<P,R>,R extends Abs
         if (scm==null) {
             // for historical reason, null means CVS.
             try {
-                Class<?> c = Hudson.getInstance().getPluginManager().uberClassLoader.loadClass("hudson.scm.CVSChangeLogParser");
+                Class<?> c = Hudson.getInstance().getPluginManager().uberClassLoader.loadClass("hudson.scm.cvs.CVSChangeLogParser");
                 scm = (ChangeLogParser)c.newInstance();
             } catch (ClassNotFoundException e) {
                 // if CVS isn't available, fall back to something non-null.
