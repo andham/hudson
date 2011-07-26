@@ -127,25 +127,36 @@
                     </execution>
                 </executions>
             </plugin>
-            <!--  Use the maven-dependency-plugin -->
+             
             <plugin>
-                <groupId>org.jvnet.maven-antrun-extended-plugin</groupId>
-                <artifactId>maven-antrun-extended-plugin</artifactId>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-dependency-plugin</artifactId>
+                <version>2.1</version>
                 <executions>
                     <execution>
+                        <id>make-executable</id>
                         <phase>generate-resources</phase>
-                        <configuration>
-                            <tasks>
-                                <mkdir dir="target/classes/windows-service" />
-                                <resolveArtifact artifactId="winsw" tofile="target/classes/windows-service/hudson.exe" />
-                            </tasks>
-                        </configuration>
                         <goals>
-                            <goal>run</goal>
+                            <goal>copy</goal>
                         </goals>
+                        <configuration>
+                            <artifactItems>
+                                <artifactItem>
+                                    <groupId>com.sun.winsw</groupId>
+                                    <artifactId>winsw</artifactId>
+                                    <version>1.10</version>
+                                    <classifier>bin</classifier>
+                                    <type>exe</type>
+                                    <overWrite>true</overWrite>
+                                    <outputDirectory>target/classes/windows-service</outputDirectory>
+                                    <destFileName>hudson.exe</destFileName>
+                                </artifactItem>
+                            </artifactItems>
+                        </configuration>
                     </execution>
                 </executions>
             </plugin>
+            
             <plugin><!-- set main class -->
                 <artifactId>maven-jar-plugin</artifactId>
                 <configuration>
@@ -171,7 +182,7 @@
         <profile>
             <id>release</id>
             <properties>
-        <!-- for releases, just use the POM version. See above ant-run plugin for how this gets used. -->
+                <!-- for releases, just use the POM version. See above ant-run plugin for how this gets used. -->
                 <build.version>${project.version}</build.version>
             </properties>
             <build>
@@ -189,11 +200,11 @@
                         </executions>
                     </plugin>
                     <plugin>
-            <!--
-              generate jelly taglib docs from src/main/resoruces.
-              this is necessary in addition to the <reporting> configuration
-              to get the results deployed.
-            -->
+                        <!--
+                          generate jelly taglib docs from src/main/resoruces.
+                          this is necessary in addition to the <reporting> configuration
+                          to get the results deployed.
+                        -->
                         <groupId>org.kohsuke.stapler</groupId>
                         <artifactId>maven-stapler-plugin</artifactId>
                         <executions>
@@ -213,7 +224,7 @@
             </build>
         </profile>
         <profile>
-      <!-- run FindBugs for better error detection -->
+            <!-- run FindBugs for better error detection -->
             <id>findbugs</id>
             <reporting>
                 <plugins>
@@ -237,7 +248,7 @@
             <groupId>org.eclipse.hudson.main</groupId>
             <artifactId>hudson-remoting</artifactId>
         </dependency>
-    <!-- Why does the core depend on the CLI? -->
+        <!-- Why does the core depend on the CLI? -->
         <dependency>
             <groupId>org.eclipse.hudson.main</groupId>
             <artifactId>hudson-cli</artifactId>
@@ -341,10 +352,10 @@
             </exclusions>
         </dependency>
         <dependency>
-      <!--
-        The version included in the transitive dependency doesn't have the source zip,
-        so explicitly using the newer version.
-      -->
+            <!--
+              The version included in the transitive dependency doesn't have the source zip,
+              so explicitly using the newer version.
+            -->
             <groupId>commons-beanutils</groupId>
             <artifactId>commons-beanutils</artifactId>
             <version>1.8.0</version>
@@ -468,10 +479,10 @@
             <version>1.7.6</version>
         </dependency>
         <dependency>
-      <!--
-        for Grails spring bean builder.
-        Ideally we should be able to modify BeanBuilder so as not to depend on this.
-      -->
+            <!--
+              for Grails spring bean builder.
+              Ideally we should be able to modify BeanBuilder so as not to depend on this.
+            -->
             <groupId>org.springframework</groupId>
             <artifactId>spring-web</artifactId>
             <version>2.5</version>
@@ -511,14 +522,7 @@
             <artifactId>jmdns</artifactId>
             <version>3.4.0</version>
         </dependency>
-        <dependency>
-            <groupId>com.sun.winsw</groupId>
-            <artifactId>winsw</artifactId>
-            <version>1.10</version>
-            <classifier>bin</classifier>
-            <type>exe</type>
-            <scope>provided</scope><!-- this isn't really a dependency that Maven should care about, so putting 'provided' -->
-        </dependency>     
+         
         <dependency>
             <groupId>com.sun.solaris</groupId>
             <artifactId>embedded_su4j</artifactId>
@@ -574,7 +578,7 @@
         </dependency>
 
         <dependency>
-      <!-- with this, stapler can load parameter names from the debug info -->
+            <!-- with this, stapler can load parameter names from the debug info -->
             <groupId>asm</groupId>
             <artifactId>asm-commons</artifactId>
             <version>2.2.3</version>
