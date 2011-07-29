@@ -8,10 +8,9 @@
  * http://www.eclipse.org/legal/epl-v10.html
  *
  * Contributors: 
- *
- *   
+ * 
+ *   Sonatype, Inc.
  *     
- *
  *******************************************************************************/ 
 
 package org.eclipse.hudson.maven.plugin.builder.internal;
