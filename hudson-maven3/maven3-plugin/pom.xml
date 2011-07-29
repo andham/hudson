@@ -123,14 +123,6 @@
             <artifactId>hudson-gwt-test-support</artifactId>
             <scope>test</scope>
         </dependency>
-        
-        <dependency>
-            <groupId>org.jvnet.hudson.main</groupId>
-            <artifactId>hudson-war</artifactId>
-            <version>${project.version}</version>
-            <type>war</type>
-            <scope>test</scope>
-        </dependency>
 
         <dependency>
             <groupId>org.eclipse.hudson.main</groupId>
@@ -209,7 +201,7 @@
                 </executions>
             </plugin>
 
-            <plugin>
+            <plugin> 
         <!-- Used in GWT dev/hosted mode. -->
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-war-plugin</artifactId>
