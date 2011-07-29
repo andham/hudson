@@ -97,12 +97,6 @@
 
       <dependency>
         <groupId>org.eclipse.hudson.main</groupId>
-        <artifactId>hudson-gwt-slf4j</artifactId>
-        <version>${project.version}</version>
-      </dependency>
-
-      <dependency>
-        <groupId>org.eclipse.hudson.main</groupId>
         <artifactId>hudson-gwt-theme-chrome</artifactId>
         <version>${project.version}</version>
       </dependency>
@@ -126,7 +120,6 @@
   <modules>
     <module>hudson-gwt-test-support</module>
     <module>hudson-gwt-common</module>
-    <module>hudson-gwt-slf4j</module>
     <module>hudson-gwt-theme-chrome</module>
     <module>hudson-gwt-icons-silk</module>
   </modules>
