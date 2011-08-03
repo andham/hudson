@@ -9,7 +9,7 @@
 #
 # Contributors: 
 #
-#    Kohsuke Kawaguchi, Stephen Connolly, Tom Huybrechts, Yahoo! Inc.
+#    Kohsuke Kawaguchi, Stephen Connolly, Tom Huybrechts, Yahoo! Inc., Winston Prakash
 #        
 #
 #************************************************************************** --> 
@@ -54,10 +54,10 @@
                             <directory>${project.build.directory}/generated-resources</directory>
                         </resource>
                     </webResources>
-                    <!-- for putting Main-Class into war -->
+                    <!-- Main Class to Start Jetty -->
                     <archive>
                         <manifest>
-                            <mainClass>Main</mainClass>
+                            <mainClass>org.eclipse.hudson.war.executable.StartJetty</mainClass>
                         </manifest>
                         <manifestEntries>
                             <Implementation-Version>${project.version}</Implementation-Version>
@@ -101,7 +101,6 @@
                     </execution>
                     -->
                    
-                    
                     <execution>
                         <phase>generate-resources</phase>
                         <goals>
@@ -113,7 +112,6 @@
                         </configuration>
                     </execution>
                     
-                    
                     <execution>
                         <id>copyExecuteWar</id>
                         <phase>generate-resources</phase>
@@ -122,20 +120,43 @@
                         </goals>
                         <configuration>
                             <artifactItems>
-                               
+                                <!-- TODO: Replace this with jetty console plugin -->
                                 <artifactItem>
-                                    <groupId>org.jvnet.hudson</groupId>
-                                    <artifactId>executable-war</artifactId>
-                                    <version>1.17</version>
+                                    <groupId>org.eclipse.hudson.main</groupId>
+                                    <artifactId>hudson-jetty-war-executable</artifactId>
+                                    <version>${project.version}</version>
                                     <type>jar</type>
                                     <overWrite>true</overWrite>
                                     <outputDirectory>target/generated-resources</outputDirectory>
                                     
-                                    <!-- TODO: Find out from maven guys how to exclude certain files while unpacking.
+                                    <!-- TODO: Find out from maven guys how to exclude META-INF files while unpacking.
                                     <excludes>
-                                        <exclude>META_INF</exclude>
+                                        <exclude>META-INF</exclude>
                                      </excludes>
                                      -->
+                                </artifactItem>
+                                
+                                <!-- Jetty Classes -->
+                                <artifactItem>
+                                    <groupId>org.mortbay.jetty</groupId>
+                                    <artifactId>jetty</artifactId>
+                                    <version>6.1.26</version>
+                                    <overWrite>true</overWrite>
+                                    <outputDirectory>target/generated-resources</outputDirectory>
+                                </artifactItem>
+                                <artifactItem>
+                                    <groupId>org.mortbay.jetty</groupId>
+                                    <artifactId>jetty-util</artifactId>
+                                    <version>6.1.26</version>
+                                    <overWrite>true</overWrite>
+                                    <outputDirectory>target/generated-resources</outputDirectory>
+                                </artifactItem>
+                                <artifactItem>
+                                    <groupId>org.mortbay.jetty</groupId>
+                                    <artifactId>servlet-api</artifactId>
+                                    <version>2.5-20081211</version>
+                                    <overWrite>true</overWrite>
+                                    <outputDirectory>target/generated-resources</outputDirectory>
                                 </artifactItem>
                                 
                             </artifactItems>
@@ -179,15 +200,6 @@
                                     <overWrite>true</overWrite>
                                     <outputDirectory>target/generated-resources/WEB-INF</outputDirectory>
                                     <destFileName>hudson-cli.jar</destFileName>
-                                </artifactItem>
-                                <artifactItem>
-                                    <groupId>org.jvnet.hudson.winstone</groupId>
-                                    <artifactId>winstone</artifactId>
-                                    <version>0.9.10-hudson-24</version>
-                                    <type>jar</type>
-                                    <overWrite>true</overWrite>
-                                    <outputDirectory>target/generated-resources</outputDirectory>
-                                    <destFileName>winstone.jar</destFileName>
                                 </artifactItem>
                                 
                                 <!-- bundled plugins (built with core) -->
