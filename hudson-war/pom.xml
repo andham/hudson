@@ -72,34 +72,6 @@
                 <artifactId>maven-dependency-plugin</artifactId>
                 <version>2.3</version>
                 <executions>
-                    
-                    <!-- TODO: Find out from maven guys how to attach hudson war as hudson-war-for-test.jar artifact item.
-                    <execution>
-                        <id>packageHudsonForTest</id>
-                        <phase>package</phase>
-                        <goals>
-                            <goal>run</goal>
-                        </goals>
-                        <configuration>
-                            <artifactItems>
-                               
-                                <artifactItem>
-                                    <groupId>${project.groupId}</groupId>
-                                    <artifactId>${project.artifactId}</artifactId>
-                                    <version>${project.version}</version>
-                                    <classifier>war-for-test</classifier>
-                                    <type>jar</type>
-                                    <includes>
-                                        <include>
-                                            target/hudson.war
-                                        </include>
-                                    </includes>
-                                </artifactItem> 
-                                
-                            </artifactItems>
-                        </configuration>
-                    </execution>
-                    -->
                    
                     <execution>
                         <phase>generate-resources</phase>
@@ -129,11 +101,13 @@
                                     <overWrite>true</overWrite>
                                     <outputDirectory>target/generated-resources</outputDirectory>
                                     
-                                    <!-- TODO: Find out from maven guys how to exclude META-INF files while unpacking.
+                                    <!-- TODO: Find out from maven guys how to exclude META-INF files while unpacking. -->
+                                    <!--
                                     <excludes>
                                         <exclude>META-INF</exclude>
-                                     </excludes>
-                                     -->
+                                    </excludes>
+                                    -->
+                                      
                                 </artifactItem>
                                 
                                 <!-- Jetty Classes -->
@@ -285,7 +259,29 @@
                     </execution>
                 </executions>
             </plugin>
-      
+            
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>build-helper-maven-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>attach-artifacts</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>attach-artifact</goal>
+                        </goals>
+                        <configuration>
+                            <artifacts>
+                                <artifact>
+                                    <file>${project.build.directory}/${project.artifactId}-${project.version}.war</file>
+                                    <type>jar</type>
+                                    <classifier>war-for-test</classifier>
+                                </artifact>
+                            </artifacts>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
 
             <plugin>
                 <groupId>org.jvnet.hudson.tools</groupId>
