@@ -7,12 +7,12 @@
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
  *
- * Contributors: 
+ * Contributors:
  *
- *   
- *     
  *
- *******************************************************************************/ 
+ *
+ *
+ *******************************************************************************/
 
 package org.eclipse.hudson.maven.model;
 
@@ -21,8 +21,6 @@ import java.io.StringBufferInputStream;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
-
-import org.eclipse.hudson.maven.model.PropertiesDTO;
 
 /**
  * Various model utilities.

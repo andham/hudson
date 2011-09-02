@@ -32,7 +32,6 @@
       <groupId>org.eclipse.hudson.main</groupId>
       <artifactId>maven3-eventspy-3.0</artifactId>
     </dependency>
-
   </dependencies>
 
   <build>
@@ -61,7 +60,7 @@
             </configuration>
           </execution>
           <execution>
-           <id>unpack-runtime-classes</id>
+            <id>unpack-runtime-classes</id>
             <phase>generate-resources</phase>
             <goals>
               <goal>unpack-dependencies</goal>
@@ -73,7 +72,7 @@
           </execution>
         </executions>
       </plugin>
-      
+
       <plugin>
         <groupId>org.sonatype.plugins</groupId>
         <artifactId>jarjar-maven-plugin</artifactId>
@@ -121,7 +120,7 @@
           </execution>
         </executions>
       </plugin>
-            
+
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-assembly-plugin</artifactId>

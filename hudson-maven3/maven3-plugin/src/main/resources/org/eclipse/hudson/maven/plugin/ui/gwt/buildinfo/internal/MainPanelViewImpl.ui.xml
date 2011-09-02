@@ -7,12 +7,12 @@
 # which accompanies this distribution, and is available at
 # http://www.eclipse.org/legal/epl-v10.html
 #
-# Contributors: 
+# Contributors:
 #
-#   
-#        
 #
-#************************************************************************** --> 
+#
+#
+#************************************************************************** -->
 
 <!DOCTYPE ui:UiBinder SYSTEM "http://dl.google.com/gwt/DTD/xhtml.ent">
 <ui:UiBinder xmlns:ui="urn:ui:com.google.gwt.uibinder"

@@ -98,17 +98,25 @@
         
       <!-- INTERNAL -->
 
-            <dependency>
-                <groupId>org.eclipse.hudson.main</groupId>
-                <artifactId>hudson-jaxb-xjc</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-        </dependencies>
+      <dependency>
+        <groupId>com.flipthebird.gwt-hashcode-equals</groupId>
+        <artifactId>gwt-hashcode-equals</artifactId>
+        <version>0.1.0</version>
+      </dependency>
+
+      <!-- INTERNAL -->
+
+      <dependency>
+        <groupId>org.eclipse.hudson.main</groupId>
+        <artifactId>hudson-jaxb-xjc</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+    </dependencies>
 
     </dependencyManagement>
 
-    <modules>
-        <module>hudson-jaxb-xjc</module>
-    </modules>
+  <modules>
+    <module>hudson-jaxb-xjc</module>
+  </modules>
 
 </project>

@@ -16,12 +16,8 @@
 
 package org.eclipse.hudson.maven.plugin.builder.rest;
 
-import static org.eclipse.hudson.rest.common.RestPreconditions.*;
-import static javax.ws.rs.core.MediaType.*;
-
 import java.io.IOException;
 import java.util.List;
-
 import javax.inject.Inject;
 import javax.inject.Named;
 import javax.ws.rs.GET;
@@ -30,14 +26,17 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.WebApplicationException;
-
+import org.eclipse.hudson.maven.model.config.BuildConfigurationDTO;
 import org.eclipse.hudson.maven.plugin.Constants;
 import org.eclipse.hudson.maven.plugin.builder.MavenBuilder;
 import org.eclipse.hudson.maven.plugin.builder.MavenBuilderService;
 import org.eclipse.hudson.rest.common.ProjectNameCodec;
 
 import static com.google.common.base.Preconditions.checkNotNull;
-import org.eclipse.hudson.maven.model.config.BuildConfigurationDTO;
+import static javax.ws.rs.core.MediaType.APPLICATION_JSON;
+import static javax.ws.rs.core.MediaType.APPLICATION_XML;
+import static org.eclipse.hudson.rest.common.RestPreconditions.checkBuilderIndex;
+import static org.eclipse.hudson.rest.common.RestPreconditions.checkProjectName;
 
 /**
  * Provides access to {@link MavenBuilder}'s {@link BuildConfigurationDTO} resources.

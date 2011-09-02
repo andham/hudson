@@ -7,19 +7,18 @@
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
  *
- * Contributors: 
+ * Contributors:
  *
- *   
- *     
  *
- *******************************************************************************/ 
+ *
+ *
+ *******************************************************************************/
 
 package org.eclipse.hudson.plugins.snapshotmonitor.model;
 
 import com.thoughtworks.xstream.annotations.XStreamAlias;
 import com.thoughtworks.xstream.annotations.XStreamImplicit;
 import com.thoughtworks.xstream.annotations.XStreamInclude;
-
 import java.util.Collection;
 
 /**

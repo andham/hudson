@@ -19,18 +19,15 @@ package org.eclipse.hudson.rest.api.status;
 import javax.inject.Named;
 import hudson.model.Hudson;
 import hudson.model.User;
-
+import javax.inject.Inject;
+import javax.inject.Named;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
-
-import javax.inject.Inject;
-
-import org.eclipse.hudson.service.SecurityService;
-import org.eclipse.hudson.service.SystemService;
-
 import org.eclipse.hudson.rest.api.internal.ResourceSupport;
 import org.eclipse.hudson.rest.api.user.UserConverter;
 import org.eclipse.hudson.rest.model.StatusDTO;
+import org.eclipse.hudson.service.SecurityService;
+import org.eclipse.hudson.service.SystemService;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 

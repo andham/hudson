@@ -64,12 +64,6 @@
     <gwt.compiler.optimizationLevel>9</gwt.compiler.optimizationLevel>
     <gwt.compiler.strict>true</gwt.compiler.strict>
     <gwt-maven-plugin.version>2.3.0-1</gwt-maven-plugin.version>
-
-    <!--
-     Ensure the full list is in sync with GWT UserAgent.gwt.xml
-     http://code.google.com/p/google-web-toolkit/source/browse/trunk/user/src/com/google/gwt/user/UserAgent.gwt.xml
-     -->
-    <gwt.user.agent>ie6,ie8,gecko1_8,safari,opera</gwt.user.agent>
   </properties>
 
   <modules>
@@ -152,7 +146,7 @@
           </dependencies>
         </plugin>
         
-        <plugin>
+         <plugin>
           <groupId>org.jvnet.hudson.tools</groupId>
           <artifactId>maven-hpi-plugin</artifactId>
           <version>2.1.0</version>
@@ -285,6 +279,7 @@
       <artifactId>animal-sniffer-annotation</artifactId>
       <version>1.0</version>
       <optional>true</optional><!-- no need to have this at runtime -->
+      <scope>provided</scope>
     </dependency>
 
     <dependency>
@@ -297,6 +292,12 @@
   
   <dependencyManagement>
     <dependencies>
+      <dependency>
+        <groupId>javax.servlet</groupId>
+        <artifactId>servlet-api</artifactId>
+        <version>2.4</version>
+      </dependency>
+
       <dependency>
         <groupId>org.slf4j</groupId>
         <artifactId>slf4j-api</artifactId>
@@ -510,7 +511,7 @@
         <version>${project.version}</version>
       </dependency>
 
-    </dependencies>
+     </dependencies>
   </dependencyManagement>
 
   <profiles>
@@ -628,6 +629,7 @@
           <name>it</name>
         </property>
       </activation>
+       
       <!--TODO find better solution to use properties for hudson-remoting-->
       <properties>
         <hudson.sign.alias>hudson</hudson.sign.alias>

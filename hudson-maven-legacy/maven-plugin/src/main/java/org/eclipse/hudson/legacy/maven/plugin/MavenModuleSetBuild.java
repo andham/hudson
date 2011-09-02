@@ -16,7 +16,6 @@
 
 package org.eclipse.hudson.legacy.maven.plugin;
 
-import static hudson.model.Result.FAILURE;
 import hudson.AbortException;
 import hudson.EnvVars;
 import hudson.FilePath;
@@ -53,7 +52,6 @@ import hudson.util.ArgumentListBuilder;
 import hudson.util.IOUtils;
 import hudson.util.MaskingClassLoader;
 import hudson.util.StreamTaskListener;
-
 import java.io.File;
 import java.io.IOException;
 import java.io.InterruptedIOException;
@@ -72,7 +70,6 @@ import java.util.Properties;
 import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-
 import org.apache.commons.io.FilenameUtils;
 import org.apache.commons.lang.StringUtils;
 import org.apache.maven.BuildFailureException;
@@ -93,6 +90,9 @@ import org.kohsuke.stapler.StaplerResponse;
 import org.sonatype.aether.transfer.TransferCancelledException;
 import org.sonatype.aether.transfer.TransferEvent;
 import org.sonatype.aether.transfer.TransferListener;
+
+import static hudson.model.Result.ABORTED;
+import static hudson.model.Result.FAILURE;
 
 /**
  * {@link Build} for {@link MavenModuleSet}.
@@ -122,6 +122,8 @@ public class MavenModuleSetBuild extends AbstractMavenBuild<MavenModuleSet,Maven
     
     private transient Object notifyBuildLock = new Object();
 
+    private transient Object notifyBuildLock = new Object();
+
     public MavenModuleSetBuild(MavenModuleSet job) throws IOException {
         super(job);
     }
@@ -130,6 +132,12 @@ public class MavenModuleSetBuild extends AbstractMavenBuild<MavenModuleSet,Maven
         super(project, buildDir);
     }
     
+    @Override
+    protected void onLoad() {
+        super.onLoad();
+        notifyBuildLock = new Object();
+    }
+
     @Override
     protected void onLoad() {
         super.onLoad();
@@ -434,7 +442,7 @@ public class MavenModuleSetBuild extends AbstractMavenBuild<MavenModuleSet,Maven
             // actions need to be replaced atomically especially
             // given that two builds might complete simultaneously.
             // see http://issues.hudson-ci.org/browse/HUDSON-4220 for details
-            synchronized(notifyBuildLock) {
+            synchronized(notifyBuildLock){
                 boolean modified = false;
 
                 List<Action> actions = getActions();
@@ -656,6 +664,10 @@ public class MavenModuleSetBuild extends AbstractMavenBuild<MavenModuleSet,Maven
                                 process.discard();
                             }
                         }
+
+                    } catch (InterruptedException e) {
+                        r = ABORTED;
+                        throw e;
                     } finally {
                         if (r != null) {
                             setResult(r);

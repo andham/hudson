@@ -39,7 +39,6 @@
                 <include>**</include>
             </includes>
         </fileSet>
-        
         <fileSet>
             <directory>target/lib</directory>
             <outputDirectory>/lib</outputDirectory>
@@ -47,11 +46,12 @@
                 <include>**</include>
             </includes>
         </fileSet>
-
     </fileSets>
 
     <dependencySets>
-         
+        <!--
+        Install eventspy impl jars w/o version.
+        -->
         <dependencySet>
             <outputDirectory>lib</outputDirectory>
             <useStrictFiltering>true</useStrictFiltering>

@@ -7,12 +7,12 @@
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
  *
- * Contributors: 
+ * Contributors:
  *
- *   
- *     
  *
- *******************************************************************************/ 
+ *
+ *
+ *******************************************************************************/
 
 package org.eclipse.hudson.maven.plugin.builder.internal;
 
@@ -81,6 +81,7 @@ public class BuildConfigurationExtractor
 
     public BuildConfigurationDTO extract() {
         BuildConfigurationDTO config = new BuildConfigurationDTO();
+        config.setInstallationId(getString("installationId"));
         config.setGoals(getString("goals"));
         config.setProperties(getProperties("properties"));
         config.setPomFile(getString("pomFile"));

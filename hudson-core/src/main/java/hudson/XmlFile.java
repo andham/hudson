@@ -223,7 +223,7 @@ public final class XmlFile {
     /**
      * Writes the raw XML to the given {@link OutputStream}.
      * Stream will not be closed by the implementation.
-     * @since XXX
+     * @since 2.1.1
      */
     public void writeRawTo(OutputStream os) throws IOException {
         InputStream is = new FileInputStream(file);

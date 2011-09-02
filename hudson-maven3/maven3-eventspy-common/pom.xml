@@ -26,13 +26,18 @@
     <artifactId>maven3-eventspy-common</artifactId>
     <name>Hudson :: Maven 3 :: Event Spy Common</name>
 
-    <dependencies>
-        
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-api</artifactId>
-            <scope>provided</scope>
-        </dependency>
+  <dependencies>
+     <dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-api</artifactId>
+      <scope>provided</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>com.google.guava</groupId>
+      <artifactId>guava</artifactId>
+      <scope>provided</scope>
+    </dependency>
 
         <dependency>
             <groupId>com.google.guava</groupId>

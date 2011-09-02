@@ -7,12 +7,12 @@
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/epl-v10.html
  *
- * Contributors: 
+ * Contributors:
  *
- *   
- *     
  *
- *******************************************************************************/ 
+ *
+ *
+ *******************************************************************************/
 
 package org.eclipse.hudson.events.ready;
 
@@ -98,7 +98,7 @@ public class ReadyDetector
         }
 
         // At this point we _should_ be ready, see if the app root object is installed... fingers crossed!
-         try {
+        try {
             Object app = controller.current(); // FIXME: This may actually be the only check needed?
             return app instanceof hudson.model.Hudson;
         } catch (IllegalStateException e) {
